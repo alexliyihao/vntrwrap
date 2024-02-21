@@ -4,7 +4,7 @@
 
  - [mosdepth_v0.2.5](https://github.com/brentp/mosdepth/releases?page=2)
 
-##External Data Requirement:
+## External Data Requirement:
 
  - Human Genomic reference file, too large to included in the repository:
     - source file using GRCh38_full_analysis_set_plus_decoy_hla.no_chr.fa for hg38
