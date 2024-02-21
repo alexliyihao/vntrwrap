@@ -1,0 +1,19 @@
+Note: All the following is copied from my notes, I don't know if it's the formal way, but at least it works for now.
+
+1.	Eagle2.4.1 can be git-cloned, external CPP header file will be directly loaded from Eagle2 (noxious...)
+
+2.	C++ Library Boost 1.58 (unified with Harvard setting)
+
+Follows https://stackoverflow.com/questions/12578499/how-to-install-boost-on-ubuntu
+and https://www.boost.org/doc/libs/1_51_0/doc/html/bbv2/installation.html
+
+a)	https://sourceforge.net/projects/boost/files/boost/1.58.0/
+b)	Decompressed at /mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/external_C++_library/boost_1_58_0
+c)	Bootstrap:
+  i.	./bootstrap.sh --prefix=/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/external_C++_library/boost_1_58_0/install
+d)	Build(I don't think c++03 is necessary)
+  i.	Following https://www.boost.org/doc/libs/1_58_0/doc/html/align/compatibility.html#:~:text=It%20supports%20any%20conforming%20C%2B%2B11%20or%20C%2B%2B03%20compilers.&text=Distributed%20under%20the%20Boost%20Software%20License%2C%20Version%201.0. Boost 1.58.0 need to specify an older version of C++ standard C++03 or C++11 we will use C++03 for it is using an auto_ptr which is deprecated and raise huge amount of error in C++11
+  ii.	./b2 toolset=gcc cxxflags="-std=c++03" --prefix=/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/external_C++_library/boost_1_58_0/install
+The Boost C++ Libraries were successfully built!
+e)	Installation:
+  i.	./b2 install toolset=gcc cxxflags="-std=c++03" --prefix=/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/external_C++_library/boost_1_58_0/install
