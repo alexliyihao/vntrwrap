@@ -47,20 +47,18 @@ do
 
     if [ -f $BAM_PATH -a -f $BAI_PATH ]; then
 	echo $bam_basename # for logging
-
 	echo -n $bam_file >> $OUT_READS
-
 	while read LINE
 	do
 	    ARR=( $LINE )
 	    CHR=${ARR[0]}
-	    BP_START=${ARR[1]}
-	    BP_END=${ARR[2]}
-	    # echo $CHR:$BP_START-$BP_END
-	    samtools view $BAM_PATH $CHR:$BP_START-$BP_END --verbosity 0 \
+	    BP_START_HG19=${ARR[1]}
+	    BP_END_HG19=${ARR[2]}
+	    # echo "${CHR}:${BP_START_HG19}-${BP_END_HG19}"
+	    samtools view $BAM_PATH $CHR:$BP_START_HG19-$BP_END_HG19 --verbosity 0 \
 		| awk '$2==83 || $2==99 || $2==147 || $2==163 || $2==81 || $2==97 || $2==145 || $2==161 {ctr++} END {printf("\t%d",ctr)}' \
 		>> $OUT_READS
-	done < <(awk -v IBD2R_path=$(IBD2R_path) 'NR>1 {print $1,$4,$5}' IBD2R_path)
+	done < <(awk 'NR>1 {print $1,$4,$5}' $IBD2R_path)
 	echo >> $OUT_READS
     fi
 done
