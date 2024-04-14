@@ -33,7 +33,7 @@ EXTERNAL_SOFTWARE_PATH="/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/exte
 EXTERNAL_DATA_PATH="/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/dataset"
 # output path
 OUTPUT_PATH="/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/analysis_results/mosdepth"
-
+PROJECT_NAME="covid_GRCh37"
 ## Section 3: Running ----------------------------------------------------
 
 start_time=$(date +%s)
@@ -46,7 +46,7 @@ BATCH_SIZE=25
 OFFSET=$(((SGE_TASK_ID - 1) * BATCH_SIZE))
 echo "Setting: working on Batch started from $OFFSET, batch size is $BATCH_SIZE"
 
-AGGREGATE_OUTPUT=${OUTPUT_PATH}/mosdepth_whicap_GRCh37_batch_${SGE_TASK_ID}.txt
+AGGREGATE_OUTPUT=${OUTPUT_PATH}/mosdepth_${PROJECT_NAME}_batch_${SGE_TASK_ID}.txt
 echo "Setting: the output file will be passed to $AGGREGATE_OUTPUT"
 
 for bam_file in "${INPUTFILES[@]:OFFSET:BATCH_SIZE}"
@@ -57,32 +57,31 @@ do
     BAI_PATH=${BAM_PATH%?}i
 
     bam_basename="$(basename $bam_file)"
-    # get the save path for mosdepth output, which is a folder
-    mkdir $OUTPUT_PATH/${bam_basename}_GRCh37
+    # get the save path
+    mkdir $OUTPUT_PATH/${bam_basename}_${PROJECT_NAME}
 
     if [ -f $BAM_PATH -a -f $BAI_PATH ]; then
-    	echo "Running: running mosdepth on $bam_file"
-      #-n: dont output per-base depth. skipping this output will speed execution
-      #--fast-mode # dont look at internal cigar operations or correct mate overlaps
-      #--by window size # window size
-    	$EXTERNAL_SOFTWARE_PATH/mosdepth_v0.2.5 \
-    	    -n \
-        	--fast-mode \
-    	    --by 1000 \
-    	    -f $EXTERNAL_DATA_PATH/GRCh37_reference_genome/human_g1k_v37.fasta \
-          $OUTPUT_PATH/${bam_basename}_GRCh37/$bam_basename \
-          $BAM_PATH
+      	echo "Running: running mosdepth on $bam_file"
+        #-n: dont output per-base depth. skipping this output will speed execution
+        #--fast-mode # dont look at internal cigar operations or correct mate overlaps
+        #--by window size # window size
+      	$EXTERNAL_SOFTWARE_PATH/mosdepth_v0.2.5 \
+      	    -n \
+          	--fast-mode \
+      	    --by 1000 \
+      	    -f $EXTERNAL_DATA_PATH/GRCh37_reference_genome/human_g1k_v37.fasta \
+                  $OUTPUT_PATH/${bam_basename}_${PROJECT_NAME}/$bam_basename \
+                  $BAM_PATH
 
-    	echo "Running: Adding $bam_file mosdepth result to $AGGREGATE_OUTPUT"
-    	echo -n $bam_file >> $AGGREGATE_OUTPUT
-    	# Only used chr 6 here, the source file is
-      # awk 'length($1)<=2 && $1>=1 && $1<=22 { printf("\t%d",int(100*$4+0.5)) } END {printf("\n")}'
-    	zcat $OUTPUT_PATH/${bam_basename}_GRCh37/${bam_basename}.regions.bed.gz \
-    	    | awk '$1==6 { printf("\t%d",int(100*$4+0.5)) } END {printf("\n")}' \
-    	    >> $AGGREGATE_OUTPUT
-
-        else
-    	echo "ERROR: File(s) not found for $bam_file"
+      	echo "Running: Adding $bam_file mosdepth result to $AGGREGATE_OUTPUT"
+      	echo -n $bam_file >> $AGGREGATE_OUTPUT
+        # Only used chr 6 here, the source file is
+        # awk 'length($1)<=2 && $1>=1 && $1<=22 { printf("\t%d",int(100*$4+0.5)) } END {printf("\n")}'
+      	zcat $OUTPUT_PATH/${bam_basename}_${PROJECT_NAME}/${bam_basename}.regions.bed.gz \
+      	    | awk '$1==6 { printf("\t%d",int(100*$4+0.5)) } END {printf("\n")}' \
+      	    >> $AGGREGATE_OUTPUT
+    else
+      	echo "ERROR: File(s) not found for $bam_file"
     fi
 done
 
