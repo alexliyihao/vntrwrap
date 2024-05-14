@@ -3,20 +3,19 @@
 
 # Specify the virtual memory usage
 #$ -l h_vmem=2G
-#$ -l csg_pri=TRUE
 # Specify name to be used to identify this run
 #$ -N VNTR_count_chr_6_GRCh37
-
-# Specify the output error file
-#$ -o /mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/SGE_logs/VNTR_count/VNTR_count_chr6_GRCh37.outerr
-#$ -e /mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/SGE_logs/VNTR_count/VNTR_count_chr6_GRCh37.outerr
-#$ -j y
 
 # Change directory to the current
 #$ -cwd
 
 # Specify source your bash profile. Helpful if you have environment variables set up in your .bash_profile
 #$ -S /bin/bash
+
+# Specify the output error file
+#$ -o /mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/SGE_logs/VNTR_count/VNTR_count_chr6_GRCh37.outerr
+#$ -e /mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/SGE_logs/VNTR_count/VNTR_count_chr6_GRCh37.outerr
+#$ -j y
 
 ## Section 2: Path Settings & module loading ----------------------------------------------------
 # modify this if you are not using module
@@ -40,7 +39,8 @@ for bam_file in "${INPUTFILES[@]}"
 do
     # get bam path
     BAM_PATH=$SOURCE_BAM_PATH/$bam_file
-    # get the corresponding bai path
+    # get the corresponding bai path,
+    # modify this if your file is not one .bam vs one .bai but .bam.bai(check the SLURM version)
     BAI_PATH=${BAM_PATH%?}i
 
     bam_basename="$(basename $bam_file)"

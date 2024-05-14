@@ -29,11 +29,14 @@ SOURCE_LIST="/mnt/mfs/hgrcgrid/shared/LPA_analysis/coassin_pipeline/data_inflow/
 SOURCE_BAM_PATH="/mnt/mfs/hgrcgrid/data/whicap/WHICAP_WES/BAM/washeiDragenBamsList/washeiBamsUpdate2/BQSR/bqsrRGbam"
 # the path saving your mosdepth
 EXTERNAL_SOFTWARE_PATH="/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/external_software"
-# the path saving the reference genome, check line 72 for some modification
+# the path saving the reference genome
 EXTERNAL_DATA_PATH="/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/dataset"
+REFERENCE_PATH="${EXTERNAL_DATA_PATH}/GRCh37_reference_genome/human_g1k_v37.fasta"
 # output path
 OUTPUT_PATH="/mnt/mfs/hgrcgrid/shared/LPA_analysis/VNTR_pipeline/analysis_results/mosdepth"
+# prefix for output
 PROJECT_NAME="covid_GRCh37"
+
 ## Section 3: Running ----------------------------------------------------
 
 start_time=$(date +%s)
@@ -53,7 +56,8 @@ for bam_file in "${INPUTFILES[@]:OFFSET:BATCH_SIZE}"
 do
     # get bam path
     BAM_PATH=$SOURCE_BAM_PATH/$bam_file
-    # get corresponding bai path
+    # get the corresponding bai path,
+    # modify this if your file is not one .bam vs one .bai but .bam.bai(check the SLURM version)
     BAI_PATH=${BAM_PATH%?}i
 
     bam_basename="$(basename $bam_file)"
@@ -69,7 +73,7 @@ do
       	    -n \
           	--fast-mode \
       	    --by 1000 \
-      	    -f $EXTERNAL_DATA_PATH/GRCh37_reference_genome/human_g1k_v37.fasta \
+      	    -f $REFERENCE_PATH \
                   $OUTPUT_PATH/${bam_basename}_${PROJECT_NAME}/$bam_basename \
                   $BAM_PATH
 

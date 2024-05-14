@@ -2,7 +2,7 @@
 
 This repository is an implementation(wrapper) for [*Protein-coding repeat polymorphisms strongly shape diverse human phenotypes paper code*](https://www.science.org/doi/10.1126/science.abg8289)'s code repo for easier re-use.
 
-Current version is the raw code intended to be run on a SGE cluster with a minimal documentation for running.
+Current version is the raw code intended to be run on SGE or SLURM cluster with a minimal documentation for running.
 
 ## Steps:
 
@@ -11,6 +11,10 @@ Current version is the raw code intended to be run on a SGE cluster with a minim
 3. normalize_mosdepth
 4. find_neighbors
 5. neighbors_normalization
+
+## Updates:
+
+2024/05/14: added SLURM version due to the scheduler transition of CUIMC neurology cluster from SGE to SLURM.
 
 ## TODO:
 

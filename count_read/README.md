@@ -11,12 +11,12 @@
 
 ## Format:
 
-SGE script (i.e. distributed computing)
+SGE script / SLURM script (i.e. distributed computing scheduler script)
 
 ## File:
 
- - count_read_chr_6_only.sh used in our pipeline
- - count_read_cleaned.sh should be better but not tested
+ - count_read_chr_6_only_SGE.sh used in SGE
+ - count_read_chr_6_only_SLURM.sh used in SLURM
 
 ## Running:
 
