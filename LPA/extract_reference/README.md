@@ -33,5 +33,5 @@ Linux Bash script (it's running relatively fast and it's unnecessary to put it i
 
 ## Corresponding original file:
 
-code/genotyping_opt/LPA/ref_hg38.bed
-code/genotyping_opt/LPA/extract_KIV2_sequence.sh
+ - code/genotyping_opt/LPA/ref_hg38.bed
+ - code/genotyping_opt/LPA/extract_KIV2_sequence.sh

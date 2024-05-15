@@ -27,11 +27,12 @@ For each type of KIV2 repeat ("1B_KIV3","1B_notKIV3","1B","1A"):
 
 ## Output:
 
-4 individual files from OUTPUT_PREFIX(don't give an extension name to it, or it will be weird)
-${OUTPUT_PREFIX}.exon1A.dipCN.txt
-${OUTPUT_PREFIX}.exon1B.dipCN.txt
-${OUTPUT_PREFIX}.exon1B_KIV3.dipCN.txt
-${OUTPUT_PREFIX}.exon1B_notKIV3.dipCN.txt
+4 individual files from OUTPUT_PREFIX:
+
+ - OUTPUT_PREFIX.exon1A.dipCN.txt
+ - OUTPUT_PREFIX.exon1B.dipCN.txt
+ - OUTPUT_PREFIX.exon1B_KIV3.dipCN.txt
+ - OUTPUT_PREFIX.exon1B_notKIV3.dipCN.txt
 
 ## Corresponding original file:
 

@@ -36,12 +36,13 @@
 2. compile the cpp script into binary first, and make sure the path at .sh file line 52 is the one you compiled.
 
 For each .bam file:
-3. samtools view 6:161032032-161068032 (LPA gene)
-4. Only using flag 99,147,83,163 in samtools view.
+
+1. samtools view 6:161032032-161068032 (LPA gene)
+2. Only using flag 99,147,83,163 in samtools view.
   - It is different from the main pipeline (rest four 81/97/145/161 are not included).
-5. sort the input by name and position
-6. push the value into cpp binary file
-7. The binary file run a read-depth based algorithm and compute a score for each repeat.
+3. sort the input by name and position
+4. push the value into cpp binary file
+5. The binary file run a read-depth based algorithm and compute a score for each repeat.
   -	If first position(161032593) is the smallest, it’s a 1B_KIV3
   -	If fifth position(index 4, 161054784) is the smallest it’s 1B_KIV2
   -	If first and fifth are equal and both smallest, it’s 1B_tied
@@ -53,5 +54,5 @@ A tab-split value txt file with 4 columns
 
 ## Corresponding original file:
 
-code/genotyping_opt/LPA/realign.cpp
-code/genotyping_opt/LPA/run_realign.sh
+ - code/genotyping_opt/LPA/realign.cpp
+ - code/genotyping_opt/LPA/run_realign.sh
