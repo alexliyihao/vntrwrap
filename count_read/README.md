@@ -1,4 +1,4 @@
-# Count the reads
+# Step 1: Count the reads
 
 ## External Software Requirement:
 

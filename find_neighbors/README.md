@@ -1,4 +1,4 @@
-# Find Neighbors
+# Step 4: Find Neighbors
 
 ## External Software Requirement:
 
@@ -13,9 +13,11 @@ None
 C++ script, the g++ compile and running is at the top of the script
 
 ## File:
+
  - find_neighbor.cpp
 
 ## Running:
+
  - A naive pairwise distance computing process - see the notes sent before.
 
 ## Corresponding original file:

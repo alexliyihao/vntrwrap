@@ -1,4 +1,4 @@
-# Mosdepth
+# Step 2: Mosdepth
 
 ## External Software Requirement:
 

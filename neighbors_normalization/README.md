@@ -1,4 +1,4 @@
-# Neighbor-wise normalization
+# Step 5: Neighbor-wise normalization
 
 ## External Software Requirement:
 

@@ -1,4 +1,4 @@
-# Normalize Mosdepth
+# Step 3: Normalize Mosdepth
 
 ## External Software Requirement (see external_source/cpp_external.txt):
 
