@@ -34,3 +34,6 @@ code/WES_read_depth/normalize_mosdepth.cpp
 
  - fixed a bug that the first read has 100x as much as others weights during the mean_depths computing
  - *pyextern* is an attempt of python argparse, not tested yet
+ - example input sample: see input_format folder
+   - batch input [prefix]\_batch\_[batchnumber].txt.gz is a tab-separated-value, each row started by subject ID and follows by the depth*100 by 1000 bp-windows, the screenshot is the start of first row.
+   - individual mosdepth output .regions.bed.gz is "chr pos pos+1000 depth" for each row, which is.
