@@ -1,6 +1,6 @@
 # LPA sub-pipeline
 
-This part is working on LPA genes' KIV-2 repeats in paper [TODO: add link](https:?) with Dr.Reyes-Soffer Gissette and Dr.Badri Vardarajan.
+This part is working on LPA genes' KIV-2 repeats in paper *[Ancestry specific distribution of LPA Kringle IV-Type-2 genetic variants highlight associations to apo(a) copy number, glucose, and hypertension](https://doi.org/10.1101/2024.07.09.24310176)* with Dr.Reyes-Soffer Gissette and Dr.Badri Vardarajan.
 
 
 To work on LPA, this sub-pipeline should be run after the main pipeline step 4 (find_neighbors), and main pipeline step 5 (neighbors_normalization) can be omitted

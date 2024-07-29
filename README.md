@@ -2,7 +2,7 @@
 
 This repository is an implementation(wrapper) for [*Protein-coding repeat polymorphisms strongly shape diverse human phenotypes paper code*](https://www.science.org/doi/10.1126/science.abg8289)'s code repo for easier re-use.
 
-This pipeline is designed for the collaborated study project on WHICAP cohort [paper: TOBE ADDED]() of Reyes-Soffer Lab, Department of Preventive Medicine, Columbia University Irving Medical Center(CUIMC) and Badri Vardarajan Lab, The Gertrude H. Sergievsky Center, Department of Neurology CUIMC. We are working on **Hg19** rather than the **Hg38** references and originally dealing with LPA KIV2 repeats on Chr 6. So it's not exactly working the same as the source pipeline, a part of them has been modified, and the LPA-specific pipeline can be found at *LPA* path.
+This pipeline is designed for the collaborated study project on WHICAP cohort *[Ancestry specific distribution of LPA Kringle IV-Type-2 genetic variants highlight associations to apo(a) copy number, glucose, and hypertension](https://doi.org/10.1101/2024.07.09.24310176)* of Reyes-Soffer Lab, Department of Preventive Medicine, Columbia University Irving Medical Center(CUIMC) and Badri Vardarajan Lab, The Gertrude H. Sergievsky Center, Department of Neurology CUIMC. We are working on **Hg19** rather than the **Hg38** references and originally dealing with LPA KIV2 repeats on Chr 6. So it's not exactly working the same as the source pipeline, a part of them has been modified, and the LPA-specific pipeline can be found at *LPA* path.
 
 Current version is the raw code intended to be run on SGE or SLURM cluster with a minimal documentation for running.
 
