@@ -4,7 +4,7 @@
 
  - g++
  - [boost 1.58](https://www.boost.org/users/history/version_1_58_0.html)
- - [Eagle 2.4.1](https://github.com/poruloh/Eagle)(only the source code, not running)
+ - [Eagle 2.4.1](https://github.com/poruloh/Eagle)(dependency, you can also download correspoding files from https://github.com/poruloh/Eagle/tree/master/src)
 
 ## External Data Requirement:
 

@@ -13,6 +13,9 @@ normalize_mosdepth_inflow_rewritten.cpp \
 -l boost_iostreams \
 -lz
 
+If g++ asked you for “FileUtils.cpp”, “StringUtils.cpp”, and “Timer.cpp” , you need files here
+https://github.com/poruloh/Eagle/tree/master/src
+
 running:
 ./normalize_mosdepth_inflow_rewritten \
 the <prefix> of mosdepth batch output <prefix>_batch_<batchnumber>.txt.gz\
